@@ -3,7 +3,7 @@ version: '3.5'
 services:
     # Frontend
     web:
-        image: jitsi/web:${JITSI_IMAGE_VERSION:-stable-9779}
+        image: auroraphtgrp/jitsi-react:1.1.1
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
             - '${HTTP_PORT}:80'
@@ -195,7 +195,7 @@ services:
             service: "jitsi-prosody"
         volumes:
             - ${CONFIG}/prosody/config:/config:Z
-            - ${CONFIG}/prosody/prosody-plugins-custom:/prosody-plugins-custom:Z
+            - ./prosody/rootfs/prosody-plugins-custom:/prosody-plugins-custom:Z
         environment:
             - AUTH_TYPE
             - DISABLE_POLLS
